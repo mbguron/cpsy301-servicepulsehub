@@ -11,7 +11,7 @@ _Group Members_
 1. Mahabirjaisingh Balbirsingh Guron
 2. Hoang Phoung Uyen Nguyen
 3. Hoa Tran
-4. Adegoke Jaafar Adeyemi\
+4. Adegoke Jaafar Adeyemi
 
 ## Project Overview
 
