@@ -240,6 +240,7 @@ export default function AdminCustomers() {
   }
 
   return (
+<<<<<<< HEAD
     <main className="min-h-screen bg-slate-100 p-6 lg:p-8">
       <div className="mb-6 flex flex-col gap-4 rounded-2xl bg-white p-6 shadow-sm md:flex-row md:items-center md:justify-between">
         <div>
@@ -494,5 +495,10 @@ export default function AdminCustomers() {
         </section>
       </div>
     </main>
+=======
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-4">Our Services</h1>
+    </div>
+>>>>>>> 1e1d6acfb12adb37284e29a4d0ddb853245ccc8f
   );
 }
