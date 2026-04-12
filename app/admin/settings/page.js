@@ -200,21 +200,21 @@ export default function AdminSettings() {
         </div>
       </div>
 
-      {/* Danger Zone */}
-      <div className="bg-white rounded-lg shadow-md p-6 border-2 border-red-200">
-        <h2 className="text-2xl font-bold text-red-600 mb-4">Danger Zone</h2>
-        <p className="text-gray-600 mb-4">
-          These actions cannot be undone. Proceed with caution.
-        </p>
-        <div className="space-y-2">
-          <button className="block w-full bg-red-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 transition">
-            Delete All Data
-          </button>
-          <button className="block w-full bg-red-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 transition">
-            Reset to Defaults
-          </button>
-        </div>
-      </div>
+  {/*    
+        <div className="bg-white rounded-lg shadow-md p-6 border-2 border-red-200">
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Danger Zone</h2>
+          <p className="text-gray-600 mb-4">
+            These actions cannot be undone. Proceed with caution.
+          </p>
+          <div className="space-y-2">
+            <button className="block w-full bg-red-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 transition">
+              Delete All Data
+            </button>
+            <button className="block w-full bg-red-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 transition">
+              Reset to Defaults
+            </button>
+          </div>
+        </div> */}
 
       {/* Save Button */}
       <div className="flex gap-4">
