@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useMemo } from "react";
 import Link from "next/link";
 
@@ -39,53 +40,51 @@ export default function AppointmentBooking() {
     "Other",
   ];
 
-  // Define business hours and available slots
   const BUSINESS_HOURS = {
-    start: 9, // 9:00 AM
-    end: 18, // 6:00 PM
-    interval: 30, // 30-minute intervals
+    start: 9,
+    end: 18,
+    interval: 30,
   };
 
-  // Mock booking data - in real app, this would come from database
   const bookedSlots = {
     "2024-04-10": ["09:00", "09:30", "14:00", "14:30"],
     "2024-04-11": ["10:00", "11:00", "15:00"],
     "2024-04-12": ["09:00", "13:00", "16:00", "16:30"],
   };
 
-  // Get today's date in YYYY-MM-DD format
   const today = new Date().toISOString().split("T")[0];
 
-  // Check if a time slot is still available (not booked by someone else during submission)
   const isTimeSlotAvailable = (date, time) => {
     const bookedForDate = bookedSlots[date] || [];
     return !bookedForDate.includes(time);
   };
 
-  // Generate available time slots for selected date
   const availableTimeSlots = useMemo(() => {
     if (!formData.date) return [];
 
     const slots = [];
     const { start, end, interval } = BUSINESS_HOURS;
-
-    // Get booked slots for this date
     const bookedForDate = bookedSlots[formData.date] || [];
 
     for (let hour = start; hour < end; hour++) {
       for (let minute = 0; minute < 60; minute += interval) {
-        const timeStr = `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+        const timeStr = `${String(hour).padStart(2, "0")}:${String(
+          minute,
+        ).padStart(2, "0")}`;
 
-        // Check if this slot is not booked and not in the past
         if (!bookedForDate.includes(timeStr)) {
-          // Calculate end time
           let endHour = hour;
           let endMinute = minute + interval;
+
           if (endMinute >= 60) {
             endHour += 1;
             endMinute = 0;
           }
-          const endTimeStr = `${String(endHour).padStart(2, "0")}:${String(endMinute).padStart(2, "0")}`;
+
+          const endTimeStr = `${String(endHour).padStart(2, "0")}:${String(
+            endMinute,
+          ).padStart(2, "0")}`;
+
           const timeRange = `${timeStr} - ${endTimeStr}`;
 
           slots.push({
@@ -102,10 +101,10 @@ export default function AppointmentBooking() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-      // Reset time when date changes
       ...(name === "date" && { time: "" }),
     }));
   };
@@ -113,7 +112,9 @@ export default function AppointmentBooking() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Appointment Data:", formData);
+
     setSubmitted(true);
+
     setTimeout(() => {
       setSubmitted(false);
       setFormData({
@@ -131,22 +132,21 @@ export default function AppointmentBooking() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <main className="min-h-screen bg-slate-100 px-6 py-10 md:px-10">
+      <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-10">
+          <h1 className="text-4xl font-bold text-gray-900 mb-3">
             Book Your Appointment
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-gray-600">
             Schedule a convenient time for your device repair
           </p>
         </div>
 
         {/* Form Container */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+        <div className="bg-white rounded-2xl shadow-sm p-8 md:p-12">
           {submitted ? (
-            // Success Message
             <div className="text-center py-12">
               <div className="mb-4 flex justify-center">
                 <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
@@ -165,30 +165,32 @@ export default function AppointmentBooking() {
                   </svg>
                 </div>
               </div>
+
               <h2 className="text-2xl font-bold text-gray-900 mb-2">
                 Appointment Booked!
               </h2>
+
               <p className="text-gray-600 mb-6">
                 Thank you for booking with ServicePulse Hub. We'll contact you
                 soon to confirm your appointment.
               </p>
+
               <Link
-                href="/"
+                href="/dashboard"
                 className="inline-block bg-orange-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-orange-600 transition"
               >
-                Back to Home
+                Back to Dashboard
               </Link>
             </div>
           ) : (
-            // Form
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Personal Information Section */}
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-6 pb-4 border-b-2 border-orange-200">
                   Your Information
                 </h3>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* First Name */}
                   <div>
                     <label
                       htmlFor="firstName"
@@ -208,7 +210,6 @@ export default function AppointmentBooking() {
                     />
                   </div>
 
-                  {/* Last Name */}
                   <div>
                     <label
                       htmlFor="lastName"
@@ -228,7 +229,6 @@ export default function AppointmentBooking() {
                     />
                   </div>
 
-                  {/* Email */}
                   <div>
                     <label
                       htmlFor="email"
@@ -248,7 +248,6 @@ export default function AppointmentBooking() {
                     />
                   </div>
 
-                  {/* Phone */}
                   <div>
                     <label
                       htmlFor="phone"
@@ -275,8 +274,8 @@ export default function AppointmentBooking() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-6 pb-4 border-b-2 border-orange-200">
                   Device & Service
                 </h3>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Device Type */}
                   <div>
                     <label
                       htmlFor="device"
@@ -301,7 +300,6 @@ export default function AppointmentBooking() {
                     </select>
                   </div>
 
-                  {/* Service Type */}
                   <div>
                     <label
                       htmlFor="service"
@@ -333,8 +331,8 @@ export default function AppointmentBooking() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-6 pb-4 border-b-2 border-orange-200">
                   Appointment Details
                 </h3>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Date */}
                   <div>
                     <label
                       htmlFor="date"
@@ -354,7 +352,6 @@ export default function AppointmentBooking() {
                     />
                   </div>
 
-                  {/* Time Slots */}
                   <div>
                     <label
                       htmlFor="time"
@@ -362,6 +359,7 @@ export default function AppointmentBooking() {
                     >
                       Preferred Time *
                     </label>
+
                     {!formData.date ? (
                       <div className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-500">
                         Select a date first
@@ -375,7 +373,7 @@ export default function AppointmentBooking() {
                           const selectedSlot = availableTimeSlots.find(
                             (slot) => slot.value === e.target.value,
                           );
-                          // Only allow selection if slot is available
+
                           if (selectedSlot && selectedSlot.available) {
                             handleChange(e);
                           }
@@ -403,7 +401,6 @@ export default function AppointmentBooking() {
                   </div>
                 </div>
 
-                {/* Available Slots Info */}
                 {formData.date && availableTimeSlots.length > 0 && (
                   <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                     <p className="text-sm text-blue-800">
@@ -429,6 +426,7 @@ export default function AppointmentBooking() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-6 pb-4 border-b-2 border-orange-200">
                   Additional Information
                 </h3>
+
                 <div>
                   <label
                     htmlFor="description"
@@ -452,7 +450,7 @@ export default function AppointmentBooking() {
               <div className="pt-6">
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-orange-700 transition duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600 transition shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={!formData.time}
                 >
                   Book Appointment
@@ -470,7 +468,7 @@ export default function AppointmentBooking() {
 
         {/* Additional Info Cards */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-lg shadow-md p-6 text-center">
+          <div className="bg-white rounded-2xl shadow-sm p-6 text-center">
             <div className="mb-4 flex justify-center">
               <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
                 <svg
@@ -494,7 +492,7 @@ export default function AppointmentBooking() {
             </p>
           </div>
 
-          <div className="bg-white rounded-lg shadow-md p-6 text-center">
+          <div className="bg-white rounded-2xl shadow-sm p-6 text-center">
             <div className="mb-4 flex justify-center">
               <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
                 <svg
@@ -518,7 +516,7 @@ export default function AppointmentBooking() {
             </p>
           </div>
 
-          <div className="bg-white rounded-lg shadow-md p-6 text-center">
+          <div className="bg-white rounded-2xl shadow-sm p-6 text-center">
             <div className="mb-4 flex justify-center">
               <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
                 <svg
@@ -543,6 +541,6 @@ export default function AppointmentBooking() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

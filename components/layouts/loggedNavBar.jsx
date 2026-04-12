@@ -1,28 +1,35 @@
 import Link from "next/link";
-export default function LoggedNavBarNavBar() {
+
+export default function LoggedNavBar() {
   return (
-    <nav className="flex justify-between py-6 px-8 bg-orange-400 text-white mx-auto w-full rounded-lg">
-      <Link href="/" className="font-bold text-2xl">
+    <nav className="flex justify-between items-center py-6 px-8 bg-orange-400 text-white mx-auto w-full rounded-lg">
+      {/* Logo */}
+      <Link href="/dashboard" className="font-bold text-2xl">
         ServicePulse Hub
       </Link>
-      <div className="gap-6 flex">
-        <Link href="/booking" className="hover:underline font-semibold">
+
+      {/* Links */}
+      <div className="flex gap-6">
+        <Link
+          href="/dashboard/booking"
+          className="hover:underline font-semibold"
+        >
           Booking An Appointment
         </Link>
-        <Link href="/service" className="hover:underline font-semibold">
+
+        <Link
+          href="/dashboard/services"
+          className="hover:underline font-semibold"
+        >
           Services
         </Link>
-        <Link href="/support" className="hover:underline font-semibold">
+
+        <Link href="/dashboard/faqs" className="hover:underline font-semibold">
           FAQs
         </Link>
-        <Link href="/support" className="hover:underline font-semibold">
-          Support
-        </Link>
-        <Link href="./client/page.js" className="hover:underline font-semibold">
+
+        <Link href="/login" className="hover:underline font-semibold">
           Logout
-        </Link>
-        <Link href="/admin" className="hover:underline font-semibold">
-          Admin Portals
         </Link>
       </div>
     </nav>

@@ -50,7 +50,7 @@ export default function LoginPage() {
     }
 
     localStorage.setItem("userRole", "customer");
-    router.push("../page.js");
+    router.push("/dashboard");
   }
 
   return (
