@@ -53,10 +53,6 @@ export default function DashboardPage() {
                 >
                   Book a Repair
                 </PressButton>
-
-                <PressButton onClick={handleLogout} variant="primary">
-                  Logout
-                </PressButton>
               </div>
             </div>
           </div>
