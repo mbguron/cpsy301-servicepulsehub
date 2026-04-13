@@ -97,7 +97,7 @@ export default function LoginPage() {
               <div>
                 <label
                   htmlFor="email"
-                  className="mb-2 block text-sm font-medium text-slate-700"
+                  className="mb-2 block text-sm font-medium text-black"
                 >
                   Email Address
                 </label>
@@ -108,7 +108,7 @@ export default function LoginPage() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Enter your email"
-                  className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-orange-500"
+                  className="w-full text-black rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-orange-500"
                   required
                 />
               </div>
@@ -116,7 +116,7 @@ export default function LoginPage() {
               <div>
                 <label
                   htmlFor="password"
-                  className="mb-2 block text-sm font-medium text-slate-700"
+                  className="mb-2 block text-sm font-medium text-black"
                 >
                   Password
                 </label>
@@ -127,7 +127,7 @@ export default function LoginPage() {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Enter your password"
-                  className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-orange-500"
+                  className="w-full text-black rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-orange-500"
                   required
                 />
               </div>

@@ -64,7 +64,7 @@ export default function ServicesPage() {
               </p>
 
               <PressButton
-                onClick={() => router.push("/booking")}
+                onClick={() => router.push("/dashboard/booking")}
                 variant="primary"
               >
                 Book This Service
@@ -76,7 +76,7 @@ export default function ServicesPage() {
         {/* Bottom CTA */}
         <div className="mt-12 flex justify-center">
           <PressButton
-            onClick={() => router.push("/booking")}
+            onClick={() => router.push("/dashboard/booking")}
             variant="primary"
           >
             Book a Repair Now
