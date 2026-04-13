@@ -67,7 +67,7 @@ export default function DashboardPage() {
             </p>
 
             <h2 className="mt-4 text-4xl font-bold leading-tight md:text-5xl">
-              Reliable Device Repair and Service Management
+              Reliable Device Repair and Services
             </h2>
 
             <p className="mt-5 max-w-2xl text-base text-slate-300">

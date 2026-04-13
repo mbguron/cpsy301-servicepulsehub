@@ -63,18 +63,18 @@ export default function LoginPage() {
             </p>
 
             <h1 className="text-4xl font-bold leading-tight">
-              Smart Service Management for Modern Repair Operations
+              Seamless Repairs. Smarter Service.
             </h1>
 
             <p className="mt-5 text-base text-slate-300">
-              Manage customers, services, appointments, technicians, and
-              business operations from one centralized dashboard.
+              From booking to completion, we make your repair experience smooth
+              and transparent.
             </p>
 
             <div className="mt-8 space-y-3 text-sm text-slate-300">
-              <p>Customer account management</p>
-              <p>Service catalog administration</p>
-              <p>Operational control in one place</p>
+              <p>Quick and easy appointment booking</p>
+              <p>Reliable service for all your devices</p>
+              <p>Get back to what matters faster</p>
             </div>
           </div>
         </section>
