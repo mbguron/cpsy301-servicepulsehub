@@ -13,6 +13,11 @@ _Group Members_
 3. Hoa Tran
 4. Adegoke Jaafar Adeyemi
 
+## Steps to run this on VS Code
+-Open folder in VS Code
+-npm install
+-npm run dev
+
 ## Project Overview
 
 - ServicePulse Hub is a web-based service management system developed for CaseLogix to digitize and streamline repair service operations.
