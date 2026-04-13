@@ -14,8 +14,11 @@ _Group Members_
 4. Adegoke Jaafar Adeyemi
 
 ## Steps to run this on VS Code
+
 -Open folder in VS Code
+
 -npm install
+
 -npm run dev
 
 ## Project Overview
